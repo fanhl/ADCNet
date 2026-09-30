@@ -1,0 +1,35 @@
+data:
+  dataset: crack500
+  root: data/crack500
+  batch_size: 2
+  workers: 0
+  split_seed: 3049
+input:
+  full_image_pixels: 327680
+  tile_size: 480
+  halo: 64
+  stride: 264
+model:
+  channels: [24, 48, 96, 160]
+  decoder_channels: 48
+  difference: true
+  propagation: true
+  propagation_channels: 24
+  propagation_iterations: 2
+training:
+  seed: 3049
+  epochs: 60
+  learning_rate: 0.001
+  min_learning_rate: 0.00001
+  warmup_epochs: 1
+  loss_ramp_epochs: 10
+  weight_decay: 0.01
+  grad_clip: 1.0
+  amp: true
+  cpu_threads: 4
+losses:
+  pos_weight: 3.0
+  coverage: 0.3
+  centerline: 0.1
+  connection: 0.1
+  cldice: 0.2
